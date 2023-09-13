@@ -1,0 +1,23 @@
+{
+  "name": "playwright_framework_tamplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomaszPawlakFFED/playwright_framework_tamplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TomaszPawlakFFED/playwright_framework_tamplate/issues"
+  },
+  "homepage": "https://github.com/TomaszPawlakFFED/playwright_framework_tamplate#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.37.1"
+  }
+}
