@@ -32,7 +32,7 @@ Website automationpracice.pl is a clothing store.
     ```
     npx playwright test example.spec.ts --headed
     ```
-- run file choosen file test or files
+- run chosen file test or files
     ```
     npx playwright test tests
     ```
