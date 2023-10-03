@@ -11,33 +11,20 @@ Website automationpracice.pl is a clothing store.
     ```
     npm install
     ```
-- Update     
-    ```
-    npm update
-    ```
-- or 
-    ```
-    npm install -D @playwright/test@latest
-    ```
 ## Run
 - run all tests 
     ```
-    npx playwright test
+    npm run test
     ```
 - run single test headless
     ```
-    npx playwright test example.spec.ts
+    npm run test example.spec.ts
     ```
 - run single test in headed mode
     ```
-    npx playwright test example.spec.ts --headed
+    npm run test --headed
     ```
 - run chosen file test or files
     ```
-    npx playwright test tests
-    ```
-### npm scripts
-- run all tests
-    ```
-    npm run test
+    npm run test tests
     ```
