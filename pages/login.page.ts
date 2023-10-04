@@ -19,9 +19,9 @@ export class LoginPage {
         this.errorMsgParagraph = this.page.locator("div.alert-danger li");
     }
 
-    async singInUser(userEmail: string, userPasword: string): Promise<void> {
-        await this.loginInput.fill(userEmail);
-        await this.passwordInput.fill(userPasword);
+    async singInUser(email: string, password: string): Promise<void> {
+        await this.loginInput.fill(email);
+        await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
 }

@@ -1,4 +1,4 @@
-export const userCredentials = {
-    userEmail: "tomek.pawlak60@gmail.com",
-    userPassword: "Password123!"
+export const user = {
+    email: "tomek.pawlak60@gmail.com",
+    password: "Password123!"
 }
