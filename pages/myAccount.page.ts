@@ -1,11 +1,16 @@
-import { Locator, Page } from "@playwright/test";
+import { Page } from "@playwright/test";
 
-export class MyAccountPage {
-    readonly pageHeader: Locator;
-    readonly pageInfoAccount: Locator;
+function getElements(page: Page) {
+    return {
+        pageHeader: page.locator("h1.page-heading"),
+        pageInfoAccount: page.locator("p.info-account")
+    }
+}
 
-    constructor(page: Page) {
-        this.pageHeader = page.locator("h1.page-heading");
-        this.pageInfoAccount = page.locator("p.info-account");
+export function MyAccountPage(page: Page) {
+    const $el = getElements(page);
+
+    return {
+        $el
     }
 }

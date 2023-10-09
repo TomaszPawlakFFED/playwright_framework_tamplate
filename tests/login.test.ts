@@ -13,53 +13,53 @@ test.describe('Login tests', () => {
 
     test.beforeEach(async ({ page }) => {
 
-        const homePage = new HomePage(page);
-        loginPage = new LoginPage(page);
-        const header = new HeaderComponent(page);
+        const homePage = HomePage(page);
+        loginPage = LoginPage(page);
+        const header = HeaderComponent(page);
 
         await homePage.goToHomePage();
         await header.clickSignInButton();
     });
 
     test('Successful login with valid credentials', async ({ page }) => {
-        loginPage = new LoginPage(page);
-        const myAccountPage = new MyAccountPage(page);
+        loginPage = LoginPage(page);
+        const myAccountPage = MyAccountPage(page);
 
         await loginPage.singInUser(email, password);
         await expect.soft(page).toHaveTitle(myAccount.title);
-        await expect.soft(myAccountPage.pageHeader).toHaveText(myAccount.header);
-        await expect.soft(myAccountPage.pageInfoAccount).toHaveText(myAccount.infoAccount);
+        await expect.soft(myAccountPage.$el.pageHeader).toHaveText(myAccount.header);
+        await expect.soft(myAccountPage.$el.pageInfoAccount).toHaveText(myAccount.infoAccount);
     });
 
     test('Unsuccessful login with incorrect email', async ({ page }) => {
-        loginPage = new LoginPage(page);
+        loginPage = LoginPage(page);
 
         await loginPage.singInUser("incorrect@email.com", password);
-        await expect.soft(loginPage.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
-        await expect.soft(loginPage.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.incorrectEmailMsg);
+        await expect.soft(loginPage.$el.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
+        await expect.soft(loginPage.$el.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.incorrectEmailMsg);
     });
 
     test('Unsuccessful login with missing email', async ({ page }) => {
-        loginPage = new LoginPage(page);
+        loginPage = LoginPage(page);
 
         await loginPage.singInUser("", password);
-        await expect.soft(loginPage.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
-        await expect.soft(loginPage.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.missingEmailMsg);
+        await expect.soft(loginPage.$el.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
+        await expect.soft(loginPage.$el.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.missingEmailMsg);
     });
 
     test('Unsuccessful login with missing password', async ({ page }) => {
-        loginPage = new LoginPage(page);
+        loginPage = LoginPage(page);
 
         await loginPage.singInUser(email, "");
-        await expect.soft(loginPage.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
-        await expect.soft(loginPage.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.missingPasswordMsg);
+        await expect.soft(loginPage.$el.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
+        await expect.soft(loginPage.$el.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.missingPasswordMsg);
     });
 
     test('Unsuccessful login with incorrect password', async ({ page }) => {
-        loginPage = new LoginPage(page);
+        loginPage = LoginPage(page);
 
         await loginPage.singInUser(email, "incorrectPassword");
-        await expect.soft(loginPage.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
-        await expect.soft(loginPage.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.incorrectPasswordMsg);
+        await expect.soft(loginPage.$el.errorMsgHeader).toHaveText(login.errorMsgs.msgHeaders);
+        await expect.soft(loginPage.$el.errorMsgParagraph).toHaveText(login.errorMsgs.msgParagraphs.incorrectPasswordMsg);
     });
 });

@@ -9,9 +9,9 @@ export const dictionary = {
             msgHeaders: "There is 1 error",
             msgParagraphs: {
                 incorrectEmailMsg: "Authentication failed.",
-                missingEmailMsg: "An email address required.'",
-                incorrectPasswordMsg: "Password is required.",
-                missingPasswordMsg: "Authentication failed.",
+                missingEmailMsg: "An email address required.",
+                incorrectPasswordMsg: "Authentication failed.",
+                missingPasswordMsg: "Password is required."
             }
         }
     }

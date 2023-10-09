@@ -1,10 +1,10 @@
 import { Page } from "@playwright/test";
 
-export class HomePage {
+export function HomePage(page: Page) {
 
-    constructor(private page: Page) { }
-
-    async goToHomePage(): Promise<void> {
-        await this.page.goto('/');
+    return {
+        async goToHomePage(): Promise<void> {
+            await page.goto('/');
+        }
     }
 }

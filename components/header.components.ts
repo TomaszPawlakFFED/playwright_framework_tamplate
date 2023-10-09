@@ -1,13 +1,19 @@
 import { Locator, Page } from "@playwright/test";
 
-export class HeaderComponent {
-    readonly signInButton: Locator;
-
-    constructor(private page: Page) {
-        this.signInButton = page.locator(".login")
+function getElements(page: Page) {
+    return {
+        signInButton: page.locator(".login")
     }
+}
 
-    async clickSignInButton(): Promise<void> {
-        await this.signInButton.click();
+export function HeaderComponent(page: Page) {
+    const $el = getElements(page);
+
+    return {
+        $el,
+
+        async clickSignInButton(): Promise<void> {
+            await $el.signInButton.click();
+        }
     }
 }

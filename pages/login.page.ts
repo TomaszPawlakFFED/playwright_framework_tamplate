@@ -1,27 +1,25 @@
 import { Locator, Page } from "@playwright/test";
 
-export class LoginPage {
-    readonly loginInput: Locator;
-    readonly passwordInput: Locator;
-    readonly loginButton: Locator;
-    readonly errorMsgHeader: Locator;
-    readonly errorMsgParagraph: Locator;
+function getElements(page: Page) {
+    return {
+        loginInput: page.locator("#email"),
+        passwordInput: page.locator("#passwd"),
+        loginButton: page.locator("#SubmitLogin"),
+        errorMsgHeader: page.locator("div.alert-danger p"),
+        errorMsgParagraph: page.locator("div.alert-danger li")
+    };
+}
 
-    /* Notatka-1: Dlaczego wymagany jest private dla page. 
-    Ew. Dlaczego np. w dokumentacji PW w konstruktorze 
-    inicjalizują page poprzez this.page = page */
+export function LoginPage(page: Page) {
+    const $el = getElements(page);
 
-    constructor(private page: Page) {
-        this.loginInput = this.page.locator("#email");
-        this.passwordInput = this.page.locator("#passwd");
-        this.loginButton = this.page.locator("#SubmitLogin");
-        this.errorMsgHeader = this.page.locator("div.alert-danger p")
-        this.errorMsgParagraph = this.page.locator("div.alert-danger li");
-    }
+    return {
+        $el,
 
-    async singInUser(email: string, password: string): Promise<void> {
-        await this.loginInput.fill(email);
-        await this.passwordInput.fill(password);
-        await this.loginButton.click();
-    }
+        async singInUser(email: string, password: string): Promise<void> {
+            await $el.loginInput.fill(email);
+            await $el.passwordInput.fill(password);
+            await $el.loginButton.click();
+        },
+    };
 }
