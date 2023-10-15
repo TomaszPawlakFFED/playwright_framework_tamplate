@@ -1,5 +1,3 @@
-import { LoginPage } from '../pages/login.page';
-import { MyAccountPage } from '../pages/myAccount.page';
 import { user } from '../test-data/users.data';
 import { dictionary } from '../dictionary';
 import { test, expect } from './playwrightTest'
@@ -13,9 +11,7 @@ test.describe('Login tests', () => {
         await headerComponent.clickSignInButton();
     });
 
-    test('Successful login with valid credentials', async ({ page, loginPage }) => {
-        const myAccountPage = MyAccountPage(page);
-
+    test('Successful login with valid credentials', async ({ page, loginPage, myAccountPage }) => {
         await loginPage.singInUser(email, password);
         await expect.soft(page).toHaveTitle(myAccount.title);
         await expect.soft(myAccountPage.$el.pageHeader).toHaveText(myAccount.header);
